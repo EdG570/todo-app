@@ -1,0 +1,25 @@
+{
+  "name": "todo-app-v1",
+  "version": "1.0.0",
+  "description": "A simple todo application",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "browserify src/scripts/index.js > src/scripts/bundle.js",
+    "scss": "node-sass --output-style -o src/styles/css/ src/styles/scss/main.scss",
+    "minify:css": "cleancss -o dist/styles/css/main.css src/styles/css/main.css",
+    "minify:js": "uglifyjs src/scripts/bundle.js -o dist/scripts/bundle.js",
+    "imagemin": "imagemin src/assets dist/assets",
+    "build:js": "npm run bundle && npm run minify:js",
+    "build:css": "npm run scss && npm run minify:css",
+    "build:all": "npm run build:css && npm run build:js && npm run minify:js && npm run imagemin"
+  },
+  "author": "Ed Glazenski",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "clean-css": "^3.4.19",
+    "imagemin-cli": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "uglifyjs": "^2.4.10"
+  }
+}
