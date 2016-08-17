@@ -6,7 +6,7 @@
   "scripts": {
     "html": "cp src/*.html dist/",
     "assets": "cp -R src/assets/ dist/assets/",
-    "bundle": "browserify src/scripts/index.js > src/scripts/bundle.js -t [babelify --presets [es2015 react]]",
+    "bundle": "browserify src/scripts/index.js -o src/scripts/bundle.js -t [babelify --presets [es2015]]",
     "scss": "node-sass --output-style -o src/styles/css/ src/styles/scss/main.scss",
     "minify:css": "cleancss -o dist/styles/css/main.css src/styles/css/main.css",
     "minify:js": "uglifyjs src/scripts/bundle.js -o dist/scripts/bundle.js",
