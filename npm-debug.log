@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'watch:scss' ]
+2 info using npm@3.3.12
+3 info using node@v5.5.0
+4 verbose run-script [ 'prewatch:scss', 'watch:scss', 'postwatch:scss' ]
+5 info lifecycle todo-app-v1@1.0.0~prewatch:scss: todo-app-v1@1.0.0
+6 silly lifecycle todo-app-v1@1.0.0~prewatch:scss: no script for prewatch:scss, continuing
+7 info lifecycle todo-app-v1@1.0.0~watch:scss: todo-app-v1@1.0.0
+8 verbose lifecycle todo-app-v1@1.0.0~watch:scss: unsafe-perm in lifecycle true
+9 verbose lifecycle todo-app-v1@1.0.0~watch:scss: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/cole570/Desktop/web_dev/my_projects/todo-app-v1/node_modules/.bin:/Users/cole570/.gem/ruby/2.3.0/bin:/Users/cole570/.rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/bin:/Users/cole570/.rubies/ruby-2.3.0/bin:/Users/cole570/.rvm/gems/ruby-2.2.3/bin:/Users/cole570/.rvm/gems/ruby-2.2.3@global/bin:/Users/cole570/.rvm/rubies/ruby-2.2.3/bin:./bin:./.bundle/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/Applications/Postgres.app/Contents/Versions/9.4/include:/Users/cole570/.rvm/bin
+10 verbose lifecycle todo-app-v1@1.0.0~watch:scss: CWD: /Users/cole570/Desktop/web_dev/my_projects/todo-app-v1
+11 silly lifecycle todo-app-v1@1.0.0~watch:scss: Args: [ '-c', 'sass-watch src/styles/scss src/styles/css' ]
+12 silly lifecycle todo-app-v1@1.0.0~watch:scss: Returned: code: 2  signal: null
+13 info lifecycle todo-app-v1@1.0.0~watch:scss: Failed to exec watch:scss script
+14 verbose stack Error: todo-app-v1@1.0.0 watch:scss: `sass-watch src/styles/scss src/styles/css`
+14 verbose stack Exit status 2
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at ChildProcess.emit (events.js:185:7)
+14 verbose stack     at maybeClose (internal/child_process.js:821:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid todo-app-v1@1.0.0
+16 verbose cwd /Users/cole570/Desktop/web_dev/my_projects/todo-app-v1
+17 error Darwin 15.4.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "watch:scss"
+19 error node v5.5.0
+20 error npm  v3.3.12
+21 error code ELIFECYCLE
+22 error todo-app-v1@1.0.0 watch:scss: `sass-watch src/styles/scss src/styles/css`
+22 error Exit status 2
+23 error Failed at the todo-app-v1@1.0.0 watch:scss script 'sass-watch src/styles/scss src/styles/css'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the todo-app-v1 package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     sass-watch src/styles/scss src/styles/css
+23 error You can get their info via:
+23 error     npm owner ls todo-app-v1
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

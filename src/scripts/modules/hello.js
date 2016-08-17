@@ -1,4 +1,4 @@
-var greeting = function() {
+var greeting = () => {
     console.log('Hello!');
 };
 

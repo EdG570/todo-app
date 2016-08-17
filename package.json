@@ -4,12 +4,15 @@
   "description": "A simple todo application",
   "main": "index.js",
   "scripts": {
-    "html":   "cp src/*.html dist/",
+    "html": "cp src/*.html dist/",
     "assets": "cp -R src/assets/ dist/assets/",
-    "bundle": "browserify src/scripts/index.js > src/scripts/bundle.js",
+    "bundle": "browserify src/scripts/index.js > src/scripts/bundle.js -t [babelify --presets [es2015 react]]",
     "scss": "node-sass --output-style -o src/styles/css/ src/styles/scss/main.scss",
     "minify:css": "cleancss -o dist/styles/css/main.css src/styles/css/main.css",
     "minify:js": "uglifyjs src/scripts/bundle.js -o dist/scripts/bundle.js",
+    "watch:js": "watchify src/scripts/index.js -o src/scripts/bundle.js -dv",
+    "watch:scss": "sass-watch src/styles/scss src/styles/css",
+    "watch:all": "npm run watch:js && npm run watch:scss",
     "build:js": "npm run bundle && npm run minify:js",
     "build:css": "npm run scss && npm run minify:css",
     "build:all": "npm run build:css && npm run build:js && npm run minify:js && npm run html && npm run assets"
@@ -17,9 +20,13 @@
   "author": "Ed Glazenski",
   "license": "ISC",
   "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "clean-css": "^3.4.19",
     "node-sass": "^3.8.0",
-    "uglifyjs": "^2.4.10"
+    "sass-watch": "^0.1.0",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.7.0"
   }
 }
