@@ -1,5 +1,14 @@
-var greeting = () => {
-    console.log('Hello!');
-};
+export default class Person {
 
-module.exports = greeting;
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+}
+
+
+
+
+
