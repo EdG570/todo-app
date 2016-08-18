@@ -1,4 +1,2 @@
-var greeting = require('./modules/hello.js');
-
-greeting();
+import Person from './modules/hello';
 
