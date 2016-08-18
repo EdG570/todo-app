@@ -4,6 +4,7 @@
   "description": "A simple todo application",
   "main": "index.js",
   "scripts": {
+    "test": "mocha --compilers js:babel-register --recursive",
     "html": "cp src/*.html dist/",
     "assets": "cp -R src/assets/ dist/assets/",
     "bundle": "./node_modules/.bin/browserify src/scripts/index.js -o src/scripts/bundle.js -t [babelify --presets [es2015]]",
