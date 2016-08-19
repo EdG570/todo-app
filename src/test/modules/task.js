@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Task from '../../src/scripts/modules/task';
+import Task from '../../scripts/modules/task';
 
 describe('Task class', () => {
   let task = new Task('Wash clothes', 'High');

@@ -2,45 +2,47 @@ import List from './modules/list';
 import Task from './modules/task';
 import User from './modules/user';
 
-const createNewUser = (firstName, lastName, email, password) => {
+const createUser = (firstName, lastName, email, password) => {
   return new User(firstName, lastName, email, password);
 };
 
-const createNewTask = (description, priority) => {
+const createTask = (description, priority) => {
   return new Task(description, priority);
 };
 
-const createNewList = (name) => {
+const createList = (name) => {
   return new List(name);
 };
 
-const addTaskToList = (list, task) => {
+const addTask = (list, task) => {
   list.tasks.push(task);
 };
 
-const addListToUser = (user, list) => {
+const addList = (user, list) => {
   user.activeLists.push(list);
 };
 
 const deleteList = (user, listName, status) => {
+  let match = [];
   if (status === 'active') {
-    
+    match = user.activeLists.filter((list) => {
+      return !(list.name === listName);
+    });
   }
 
-}
+  return match;
+};
 
-// const toggleTaskStatus = (task) => {
-//   task.isComplete = !task.isComplete;
-// }
+export { createUser, createTask, createList, addTask, addList, deleteList };
 
-const me = createNewUser('Ed', 'Glazenski', 'cole570@hotmail.com', 'abc123');
-const chores = createNewList('Chores');
-const task1 = createNewTask('Cut grass', 'High');
-const task2 = createNewTask('Wash clothes', 'Medium');
+const me = createUser('Ed', 'Glazenski', 'cole570@hotmail.com', 'abc123');
+const chores = createList('Chores');
+const task1 = createTask('Cut grass', 'High');
+const task2 = createTask('Wash clothes', 'Medium');
 task1.toggleTaskStatus();
-addTaskToList(chores, task1);
-addTaskToList(chores, task2);
-addListToUser(me, chores);
+addTask(chores, task1);
+addTask(chores, task2);
+addList(me, chores);
 console.log(me);
 
 

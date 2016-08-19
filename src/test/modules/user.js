@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import User from '../../src/scripts/modules/user';
+import User from '../../scripts/modules/user';
 
 describe('User class', () => {
   let user = new User('John', 'Doe', 'JDoe@gmail.com', 'abc123');

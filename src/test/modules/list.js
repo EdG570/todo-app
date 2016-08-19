@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import List from '../../src/scripts/modules/list';
+import List from '../../scripts/modules/list';
 
 describe('List class', () => {
   let list = new List('Chores');
