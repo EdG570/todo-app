@@ -30,13 +30,13 @@ export default class MasterList {
   }
 
   moveListToArchived(name) {
-    const matchedList = this.activeLists.filter((list) => {
+    let matchedList = this.activeLists.filter((list) => {
       return list.name === name;
     });
 
+    matchedList = matchedList[0];
     this.addArchivedList(matchedList);
     this.activeLists = this.deleteActiveList(matchedList.name);
-    console.log(this.activeLists);
   }
 
 }
