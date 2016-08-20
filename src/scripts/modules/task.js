@@ -3,7 +3,7 @@ export default class Task {
   constructor(description, priority) {
     this.description = description;
     this.priority = priority;
-    this.isComplete = false;
+    this._isComplete = false;
   }
 
   setDescription(newDescription) {
@@ -14,15 +14,12 @@ export default class Task {
     this.priority = newPriority;
   }
 
-  getDescription() {
-    return this.description;
-  }
-
-  getPriority() {
-    return this.priority;
+  isComplete() {
+    return this._isComplete;
   }
 
   toggleTaskStatus() {
-    this.isComplete = !this.isComplete;
+    this._isComplete = !this._isComplete;
   }
+
 }

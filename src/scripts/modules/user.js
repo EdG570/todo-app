@@ -4,20 +4,18 @@ export default class User {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.password = password;
-    this.activeLists = [];
-    this.archivedLists = [];
+    this._password = password;
   }
 
   getFullName() {
     return `${ this.firstName } ${ this.lastName}`;
   }
 
-  getFirstName() {
-    return `${ this.firstName }`;
-  }
-
   setEmail(newEmail) {
     this.email = newEmail;
   }
+
+  createUser(firstName, lastName, email, password) {
+    return new User(firstName, lastName, email, password);
+  };
 }
