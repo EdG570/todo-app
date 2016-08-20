@@ -4,7 +4,7 @@ export default class User {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this._password = password;
+    this.password = password;
   }
 
   getFullName() {
@@ -15,7 +15,6 @@ export default class User {
     this.email = newEmail;
   }
 
-  createUser(firstName, lastName, email, password) {
-    return new User(firstName, lastName, email, password);
-  };
+
+
 }

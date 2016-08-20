@@ -13,19 +13,30 @@ export default class MasterList {
     this.archivedLists.push(list);
   }
 
-  deleteList(targetList) {
-    let match = [];
-    if (targetList._active) {
-      match = this.activeLists.filter((list) => {
-        return !(list.name === listName);
-      });
-    } else {
-      match = this.archivedLists.filter((list) => {
-        return !(list.name === listName);
-      });
-    }
+  deleteActiveList(name) {
+    const newList = this.activeLists.filter((list) => {
+      return !(list.name === name);
+    });
 
-    return match;
+    return newList; 
+  }
+
+  deleteArchivedList(name) {
+    const newList = this.archivedLists.filter((list) => {
+      return !(list.name === name);
+    });
+
+    return newList;
+  }
+
+  moveListToArchived(name) {
+    const matchedList = this.activeLists.filter((list) => {
+      return list.name === name;
+    });
+
+    this.addArchivedList(matchedList);
+    this.activeLists = this.deleteActiveList(matchedList.name);
+    console.log(this.activeLists);
   }
 
 }

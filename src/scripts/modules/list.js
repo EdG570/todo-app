@@ -14,6 +14,10 @@ export default class List {
     this.tasks.push(task);
   }
 
+  isActive() {
+    return this._active;
+  }
+
   toggleActive() {
     this._active = !this._active;
   }
@@ -26,6 +30,15 @@ export default class List {
 
     return match;
   }
+
+  filterTasks(priority) {
+    let filtered = [];
+    filtered = this.tasks.filter((task) => {
+      return task.priority === priority; 
+    });
+
+    return filtered;
+  } 
 }
 
 

@@ -1,10 +1,11 @@
 import { expect } from 'chai';
 import List from '../../scripts/modules/list';
 
-describe.only('List class', () => {
+describe('List class', () => {
   let list;
   beforeEach(() => {
     list = new List('Chores');
+
   });
 
   it('should create a new List instance', () => { 
@@ -26,10 +27,19 @@ describe.only('List class', () => {
     expect(list.tasks).to.eql([{ description: 'Do homework', priority: 'High'}]);
   });
 
-  it('should remove a task from the tasks array', () => {
-    list.tasks.push({ description: 'Buy lotion', priority: 'Low'});
-    list.tasks.push({ description: 'Withdraw money from bank', priority: 'High'});
-    list.tasks.push({ description: 'Buy swimsuit', priority: 'Medium'});
+  it('should toggle active status', () => {
+    expect(list._active).to.equal(true);
+
+    list.toggleActive();
+    expect(list._active).to.equal(false);
+  });
+
+  it('should delete a task from the tasks array', () => {
+    list.tasks = [
+      { description: 'Buy lotion', priority: 'Low'},
+      { description: 'Withdraw money from bank', priority: 'High'},
+      { description: 'Buy swimsuit', priority: 'Medium'}
+    ];
 
     expect(list.tasks).to.have.lengthOf(3);
     list.tasks = list.deleteTask('Withdraw money from bank');
@@ -38,7 +48,39 @@ describe.only('List class', () => {
     expect(list.tasks).to.eql([
         { description: 'Buy lotion', priority: 'Low'},
         { description: 'Buy swimsuit', priority: 'Medium'}
-      ]);
+    ]);
+  });
+
+  it('should return filtered tasks from list in an array', () => {
+    let filteredTasks = [];
+    list.tasks = [
+      { description: 'Buy lotion', priority: 'Low' },
+      { description: 'Withdraw money from bank', priority: 'High' },
+      { description: 'Buy swimsuit', priority: 'Medium' },
+      { description: 'Go running', priority: 'Medium' },
+      { description: 'Take the garbage out', priority: 'Low' }
+    ];
+
+    expect(filteredTasks).to.have.lengthOf(0);
+    filteredTasks = list.filterTasks('Low');
+    expect(filteredTasks).to.have.lengthOf(2);
+    expect(filteredTasks).to.be.eql([{ description: 'Buy lotion', priority: 'Low'},
+                                     { description: 'Take the garbage out', priority: 'Low'}
+    ]);
+
+    filteredTasks = [];
+    expect(filteredTasks).to.have.lengthOf(0);
+    filteredTasks = list.filterTasks('High');
+    expect(filteredTasks).to.have.lengthOf(1);
+    expect(filteredTasks).to.be.eql([{ description: 'Withdraw money from bank', priority: 'High' }]);
+  
+    filteredTasks = [];
+    expect(filteredTasks).to.have.lengthOf(0);
+    filteredTasks = list.filterTasks('Medium');
+    expect(filteredTasks).to.have.lengthOf(2);
+    expect(filteredTasks).to.be.eql([{ description: 'Buy swimsuit', priority: 'Medium' },
+                                     { description: 'Go running', priority: 'Medium' }
+    ]);
   });
 });
 
