@@ -21,5 +21,4 @@ export default class Task {
   toggleTaskStatus() {
     this._isComplete = !this._isComplete;
   }
-
 }
