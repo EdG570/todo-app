@@ -39,4 +39,12 @@ export default class MasterList {
     this.activeLists = this.deleteActiveList(matchedList.name);
   }
 
+  clearActiveLists() {
+    this.activeLists = [];
+  }
+
+  clearArchivedLists() {
+    this.archivedLists = [];
+  }
+
 }

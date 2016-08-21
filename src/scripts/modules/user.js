@@ -15,6 +15,8 @@ export default class User {
     this.email = newEmail;
   }
 
-
-
+  setPassword(newPw) {
+    this.password = newPw;
+  }
+  
 }
