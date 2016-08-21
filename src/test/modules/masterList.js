@@ -1,15 +1,28 @@
 import { expect } from 'chai';
 import MasterList from '../../scripts/modules/masterList';
 
-describe('MasterList class', () => {
-  let master = {};
-
-  const list = { name: 'Chores', tasks: [], _active: true };
-  const list2 = { name: 'Vacation prep', tasks: [], _active: true };
-  const list3 = { name: 'Pay bills', tasks: [], _active: true };
+describe.only('MasterList class', () => {
+  let master, master2, list;
 
   beforeEach(() => {
+    list = { name: 'Chores', tasks: [], _active: true };
     master = new MasterList();
+    master2 = new MasterList();
+
+    const active = [
+      { name: 'Chores', tasks: [], _active: true },
+      { name: 'Vacation prep', tasks: [], _active: true },
+      { name: 'Pay bills', tasks: [], _active: true }
+    ];
+
+    const archived = [
+      { name: 'party', tasks: [], _active: true },
+      { name: 'wedding', tasks: [], _active: true },
+      { name: 'car', tasks: [], _active: true }
+    ];
+
+    master2.activeLists = active;
+    master2.archivedLists = archived;
   });
 
   it('should construct a new instance of MasterList', () => {
@@ -32,27 +45,23 @@ describe('MasterList class', () => {
   });
 
   it('should delete a list from the activeLists array', () => {
-    master.activeLists.push(list);
-    master.activeLists.push(list2);
-    master.activeLists.push(list3);
-    expect(master.activeLists).to.have.lengthOf(3);
-
-    master.activeLists = master.deleteActiveList('Chores');
-    expect(master.activeLists).to.have.lengthOf(2);
-    expect(master.activeLists).to.eql([ { name: 'Vacation prep', tasks: [], _active: true },
-                                        { name: 'Pay bills', tasks: [], _active: true } ]);
+    expect(master2.activeLists).to.have.lengthOf(3);
+    master2.activeLists = master2.deleteActiveList('Chores');
+    expect(master2.activeLists).to.have.lengthOf(2);
+    expect(master2.activeLists).to.eql([ 
+      { name: 'Vacation prep', tasks: [], _active: true },
+      { name: 'Pay bills', tasks: [], _active: true } 
+    ]);
   });
 
   it('should delete a list from the archivedLists array', () => {
-    master.archivedLists.push(list);
-    master.archivedLists.push(list2);
-    master.archivedLists.push(list3);
-    expect(master.archivedLists).to.have.lengthOf(3);
-
-    master.archivedLists = master.deleteArchivedList('Chores');
-    expect(master.archivedLists).to.have.lengthOf(2);
-    expect(master.archivedLists).to.eql([ { name: 'Vacation prep', tasks: [], _active: true },
-                                        { name: 'Pay bills', tasks: [], _active: true } ]);
+    expect(master2.archivedLists).to.have.lengthOf(3);
+    master2.archivedLists = master2.deleteArchivedList('wedding');
+    expect(master2.archivedLists).to.have.lengthOf(2);
+    expect(master2.archivedLists).to.eql([ 
+      { name: 'party', tasks: [], _active: true },
+      { name: 'car', tasks: [], _active: true } 
+    ]);
   });
 
   it('should move a list from activeLists to archivedLists', () => {
@@ -68,23 +77,15 @@ describe('MasterList class', () => {
   });
 
   it('should delete all lists from the activeLists array', () => {
-    master.activeLists.push(list);
-    master.activeLists.push(list2);
-    master.activeLists.push(list3);
-    expect(master.activeLists).to.have.lengthOf(3);
-
-    master.clearActiveLists();
-    expect(master.activeLists).to.have.lengthOf(0);
+    expect(master2.activeLists).to.have.lengthOf(3);
+    master2.clearActiveLists();
+    expect(master2.activeLists).to.have.lengthOf(0);
   });
 
   it('should delete all lists from the archivedLists array', () => {
-    master.archivedLists.push(list);
-    master.archivedLists.push(list2);
-    master.archivedLists.push(list3);
-    expect(master.archivedLists).to.have.lengthOf(3);
-
-    master.clearArchivedLists();
-    expect(master.archivedLists).to.have.lengthOf(0);
+    expect(master2.archivedLists).to.have.lengthOf(3);
+    master2.clearArchivedLists();
+    expect(master2.archivedLists).to.have.lengthOf(0);
   });
 
 });

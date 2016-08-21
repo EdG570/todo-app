@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import User from '../../scripts/modules/user';
 
-describe.only('User class', () => {
+describe('User class', () => {
   let user = new User('John', 'Doe', 'JDoe@gmail.com', 'abc123');
 
   it('should initialize a User instance', () => {

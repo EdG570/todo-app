@@ -18,5 +18,5 @@ export default class User {
   setPassword(newPw) {
     this.password = newPw;
   }
-  
+
 }
