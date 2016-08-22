@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import List from '../../scripts/modules/list';
+import List from '../../scripts/modules/List';
 
 describe('List class', () => {
   let list, task, listWithTasks;

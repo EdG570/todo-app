@@ -1,8 +1,12 @@
 import { expect } from 'chai';
-import User from '../../scripts/modules/user';
+import User from '../../scripts/modules/User';
 
 describe('User class', () => {
-  let user = new User('John', 'Doe', 'JDoe@gmail.com', 'abc123');
+  let user;
+
+  beforeEach(() => {
+    user = new User('John', 'Doe', 'JDoe@gmail.com', 'abc123');
+  }); 
 
   it('should initialize a User instance', () => {
     expect(user).to.eql({firstName: 'John', lastName: 'Doe', email: 'JDoe@gmail.com', password: 'abc123'});

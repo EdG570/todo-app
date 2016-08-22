@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import MasterList from '../../scripts/modules/masterList';
+import MasterList from '../../scripts/modules/MasterList';
 
-describe.only('MasterList class', () => {
+describe('MasterList class', () => {
   let master, master2, list;
 
   beforeEach(() => {

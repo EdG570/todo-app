@@ -1,7 +1,7 @@
-import Task from './task';
-import List from './list';
-import MasterList from './masterlist';
-import User from './user.js';
+import Task from './Task';
+import List from './List';
+import MasterList from './Masterlist';
+import User from './User.js';
 
 export default class App {
 
