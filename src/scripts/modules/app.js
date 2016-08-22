@@ -21,4 +21,14 @@ export default class App {
     return new Task(description, priority);
   }
 
+  moveList(srcList, destList, targetListName) {
+    let matchedList = srcList.filter((listItem) => {
+      return listItem.name === targetListName;
+    });
+
+    matchedList = matchedList[0];
+    destList.push(matchedList);
+    srcList = srcList.deleteList(list, matchedList.name);
+  }
+
 }

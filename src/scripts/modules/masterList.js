@@ -1,50 +1,24 @@
 export default class MasterList {
 
-  constructor() {
-    this.activeLists = [];
-    this.archivedLists = [];
+  constructor(list) {
+    this.list = [];
   }
 
-  addActiveList(list) {
-    this.activeLists.push(list);
+  addList(list) {
+    this.list.push(list);
   }
 
-  addArchivedList(list) {
-    this.archivedLists.push(list);
-  }
-
-  deleteActiveList(name) {
-    const newList = this.activeLists.filter((list) => {
-      return !(list.name === name);
+  deleteList(list, name) {
+    const newList = this.list.filter((listItem) => {
+      return !(listItem.name === name);
     });
 
     return newList; 
   }
 
-  deleteArchivedList(name) {
-    const newList = this.archivedLists.filter((list) => {
-      return !(list.name === name);
-    });
-
-    return newList;
+  clearLists() {
+    this.list = [];
   }
 
-  moveListToArchived(name) {
-    let matchedList = this.activeLists.filter((list) => {
-      return list.name === name;
-    });
-
-    matchedList = matchedList[0];
-    this.addArchivedList(matchedList);
-    this.activeLists = this.deleteActiveList(matchedList.name);
-  }
-
-  clearActiveLists() {
-    this.activeLists = [];
-  }
-
-  clearArchivedLists() {
-    this.archivedLists = [];
-  }
-
+  // moveList() ??? or in App?
 }
