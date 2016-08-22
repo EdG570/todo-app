@@ -1,6 +1,9 @@
 export default class MasterList {
 
   constructor(list) {
+    if (new.target === MasterList) {
+      throw new Error('MasterList cannot be directly constructed.');
+    }
     this.list = [];
   }
 
