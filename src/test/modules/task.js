@@ -9,6 +9,7 @@ describe('Task class', () => {
   });
 
   it('should create a new Task instance', () => { 
+    expect(task).to.be.an.instanceOf(Task);
     expect(task.description).to.equal('Wash clothes');
     expect(task.priority).to.equal('High');
   });

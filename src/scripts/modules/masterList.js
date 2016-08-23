@@ -4,15 +4,15 @@ export default class MasterList {
     if (new.target === MasterList) {
       throw new Error('MasterList cannot be directly constructed.');
     }
-    this.list = [];
+    this.lists = [];
   }
 
   addList(list) {
     this.list.push(list);
   }
 
-  deleteList(list, name) {
-    const newList = this.list.filter((listItem) => {
+  deleteList(name) {
+    const newList = this.lists.filter((listItem) => {
       return !(listItem.name === name);
     });
 
@@ -23,5 +23,13 @@ export default class MasterList {
     this.list = [];
   }
 
-  // moveList() ??? or in App?
+  static moveList(srcList, destList, targetListName) {
+    let matchedList = srcList.lists.filter((listItem) => {
+      return listItem.name === targetListName;
+    });
+
+    matchedList = matchedList[0];
+    destList.lists.push(matchedList);
+    srcList.lists = srcList.deleteList(targetListName);
+  }
 }

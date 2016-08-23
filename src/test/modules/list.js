@@ -21,6 +21,7 @@ describe('List class', () => {
   });
 
   it('should create a new List instance', () => { 
+    expect(list).to.be.an.instanceOf(List);
     expect(list.name).to.equal('Chores');
     expect(list.tasks).to.eql([]);  
   });
