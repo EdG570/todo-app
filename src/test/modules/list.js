@@ -22,9 +22,7 @@ describe('List class', () => {
 
   describe('constructor()', () => {
     it('should create a new List instance', () => { 
-      expect(list).to.be.an.instanceOf(List);
-      expect(list.name).to.equal('Chores');
-      expect(list.tasks).to.eql([]);  
+      expect(list).to.be.an.instanceOf(List); 
     });
   });
 
@@ -37,7 +35,7 @@ describe('List class', () => {
   });
 
   describe('addTask()', () => {
-    it('should add a task to the list', () => { 
+    it('should add a task to the list instance tasks array', () => { 
       expect(list.tasks).to.eql([]);
       list.addTask(task);
       expect(list.tasks).to.eql([{ description: 'Do homework', priority: 'High'}]);
@@ -45,7 +43,7 @@ describe('List class', () => {
   });
 
   describe('toggleActive()', () => {
-    it('should toggle active status', () => {
+    it('should toggle active status property', () => {
       expect(list._active).to.equal(true);
       list.toggleActive();
       expect(list._active).to.equal(false);
@@ -53,7 +51,7 @@ describe('List class', () => {
   });
 
   describe('deleteTask()', () => {
-    it('should delete a task from the tasks array', () => {
+    it('should delete a specified task from the tasks array', () => {
       expect(listWithTasks.tasks).to.have.lengthOf(5);
       listWithTasks.tasks = listWithTasks.deleteTask('Withdraw money from bank');
       expect(listWithTasks.tasks).to.have.lengthOf(4);
@@ -76,21 +74,6 @@ describe('List class', () => {
       expect(filteredTasks).to.be.eql([
         { description: 'Buy lotion', priority: 'Low'},
         { description: 'Take the garbage out', priority: 'Low'}
-      ]);
-
-      filteredTasks = [];
-      expect(filteredTasks).to.have.lengthOf(0);
-      filteredTasks = listWithTasks.filterTasks('High');
-      expect(filteredTasks).to.have.lengthOf(1);
-      expect(filteredTasks).to.be.eql([{ description: 'Withdraw money from bank', priority: 'High' }]);
-    
-      filteredTasks = [];
-      expect(filteredTasks).to.have.lengthOf(0);
-      filteredTasks = listWithTasks.filterTasks('Medium');
-      expect(filteredTasks).to.have.lengthOf(2);
-      expect(filteredTasks).to.be.eql([
-        { description: 'Buy swimsuit', priority: 'Medium' },
-        { description: 'Go running', priority: 'Medium' }
       ]);
     });
   });

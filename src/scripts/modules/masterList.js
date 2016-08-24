@@ -8,7 +8,7 @@ export default class MasterList {
   }
 
   addList(list) {
-    this.list.push(list);
+    this.lists.push(list);
   }
 
   deleteList(name) {
@@ -20,16 +20,14 @@ export default class MasterList {
   }
 
   clearLists() {
-    this.list = [];
+    this.lists = [];
   }
 
   static moveList(srcList, destList, targetListName) {
-    let matchedList = srcList.lists.filter((listItem) => {
+    let matchedList = srcList.lists.find((listItem) => {
       return listItem.name === targetListName;
     });
 
-    matchedList = matchedList[0];
     destList.lists.push(matchedList);
-    srcList.lists = srcList.deleteList(targetListName);
   }
 }

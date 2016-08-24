@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import MasterList from '../../scripts/modules/MasterList';
-import MasterListMock from '../../scripts/modules/mocks/masterListMock';
+import MasterListMock from './mocks/masterListMock';
 
-describe('MasterList abstract class', () => {
+describe('MasterList class', () => {
   let activeList, archivedList, master, list;
 
   beforeEach(() => {
@@ -67,14 +67,13 @@ describe('MasterList abstract class', () => {
     });
   });
 
-  describe('static moveList()', () => {
-    it('should move a list from a child class array to a different child array', () => {
-      expect(activeList.lists).to.have.lengthOf(3);
+  describe('moveList()', () => {
+    it('should move a list from a source array to a desination array', () => {
       expect(archivedList.lists).to.have.lengthOf(3);
+      expect(archivedList.lists).to.not.include({ name: 'Chores', tasks: [], _active: true });
       MasterList.moveList(activeList, archivedList, 'Chores');
-      expect(activeList.lists).to.have.lengthOf(2);
       expect(archivedList.lists).to.have.lengthOf(4);
-      expect()
+      expect(archivedList.lists).to.include({ name: 'Chores', tasks: [], _active: true });
     });
   });
 });
