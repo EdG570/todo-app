@@ -1,9 +1,6 @@
 export default class MasterList {
 
-  constructor(list) {
-    if (new.target === MasterList) {
-      throw new Error('MasterList cannot be directly constructed.');
-    }
+  constructor() {
     this.lists = [];
   }
 
@@ -16,18 +13,18 @@ export default class MasterList {
       return !(listItem.name === name);
     });
 
-    return newList; 
+    this.lists = newList; 
   }
 
   clearLists() {
     this.lists = [];
   }
 
-  static moveList(srcList, destList, targetListName) {
-    let matchedList = srcList.lists.find((listItem) => {
-      return listItem.name === targetListName;
-    });
+  // moveList(srcList, destList, targetListName) {
+  //   let matchedList = srcList.lists.find((listItem) => {
+  //     return listItem.name === targetListName;
+  //   });
 
-    destList.lists.push(matchedList);
-  }
+  //   destList.lists.push(matchedList);
+  // }
 }

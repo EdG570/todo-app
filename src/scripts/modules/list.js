@@ -2,38 +2,36 @@ export default class List {
 
   constructor(name) {
     this.name = name;
-    this.tasks = [];
-    this._active = true;
+    this._tasks = [];
+    this.active = true;
   }
 
   setName(newName) {
     this.name = newName;
   }
 
-  addTask(task) {
-    this.tasks.push(task);
+  getTasks() {
+    return this._tasks;
   }
 
-  isActive() {
-    return this._active;
+  addTask(task) {
+    this._tasks.push(task);
   }
 
   toggleActive() {
-    this._active = !this._active;
+    this.active = !this.active;
   }
 
-  deleteTask(taskDescription) {
-    let match = [];
-    match = this.tasks.filter((task) => {
-      return !(task.description === taskDescription);
+  deleteTask(taskDesc) {
+    let match = this._tasks.filter((task) => {
+      return !(task.description === taskDesc);
     });
 
-    return match;
+    this._tasks = match;
   }
 
   filterTasks(priority) {
-    let filtered = [];
-    filtered = this.tasks.filter((task) => {
+    let filtered = this._tasks.filter((task) => {
       return task.priority === priority; 
     });
 
